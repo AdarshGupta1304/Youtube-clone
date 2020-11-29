@@ -40,9 +40,10 @@ const App = () => {
           key: 'AIzaSyCWCJF-V662We_L5TocEM8KTAcLi58psIA',
        }
      });
-     await setVideo({ videos : response.data.items});
+     await setVideo({ videos : response.data.items,
+                        selectedVideo: response.data.items[0]});
 
-    //  console.log(response.data);
+     console.log(response.data);
     //  console.log(response.data.items[0].id.videoId);
    }
   searchYoutube();
@@ -50,6 +51,10 @@ const App = () => {
  },[userSearch]);
 
  useEffect(() => { console.log(video.videos); },[video.videos])
+
+ const onVideoSelect = async (video) => {
+    setVideo({selectedVideo: video});
+ }
  
 
   return (
@@ -61,16 +66,15 @@ const App = () => {
 
       <Row>
       {/* Video Player Section */}
-        <Col md={8} >
-            <VideoPlayer videoInfo={video.videos[0]} />
+        <Col xs={12} sm={12} md={8} >
+            <VideoPlayer selectedVideo={video.selectedVideo} />
             {/* <VideoPlayerDetails /> */}
 
         </Col>
 
         {/* Videos list on side */}
-        <Col md={4}>
-          <VideoItem videoInfo={video} />
-          <VideoList videoInfo={video.videos} />
+        <Col xs={12} sm={12} md={4}>
+          <VideoList videoInfo={video.videos} onVideoSelect={onVideoSelect} />
         </Col>
       </Row>
     </Container>

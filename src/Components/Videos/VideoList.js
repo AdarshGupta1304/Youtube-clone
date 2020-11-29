@@ -1,9 +1,9 @@
-import React, { useState,useEffect, Fragment } from 'react';
+import React, { useState,useEffect } from 'react';
 import './video.css';
 
 import VideoItem from './VideoItem';
 
-const VideoList = ({ videoInfo }) => {
+const VideoList = ({ videoInfo, onVideoSelect}) => {
 
     const [video,setVideo] = useState([]);
 
@@ -18,15 +18,16 @@ const VideoList = ({ videoInfo }) => {
     console.log(video);
     return(
 
-
-       <Fragment>
+       <section id="videoItem">
            { 
                 video.map( (value,index) => {
-                                    return <VideoItem videos={value} />
+                    if(index === 1){
+                    return <div> <hr /> <VideoItem videos={value} onVideoSelect={onVideoSelect}  key={value.Id}  /> </div> 
+                    }
+                     return <VideoItem videos={value} onVideoSelect={onVideoSelect} key={value.Id} />
                 })
            }
-       </Fragment> 
-    // <h1>List </h1>
+       </section> 
         
     );
 }

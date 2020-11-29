@@ -35,13 +35,20 @@
 
 /* Css for Video Item */
 #videoItem{
-    margin: 15vh auto !important;
-
+    margin-top: 15vh !important;
 }
 
+.videoItems{
+    margin-top: 1vh !important;
+    cursor: pointer;
+}
+/* #videoItem:hover{
+    cursor: pointer;
+} */
+
 .thumbnail_Title{
-    font-size: small;
-    font-weight: 500;
+    font-size: 12px;
+    font-weight: 400;
     margin: 0 auto;
 }
 

@@ -29,14 +29,12 @@ const VideoPlayerDetails = ({videoInfo}) => {
 
 
     useEffect(()=>{
-        if(videoInfo !== undefined){
+        if(videoInfo !== null){
             setVideo({
                 title: videoInfo.snippet.title,
                 publishedAt: videoInfo.snippet.publishedAt,
                 channelTitle: videoInfo.snippet.channelTitle,
                 description: videoInfo.snippet.description,
-
-
             });
         }
     },[videoInfo]);

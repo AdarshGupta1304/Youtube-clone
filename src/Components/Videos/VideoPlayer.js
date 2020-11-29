@@ -5,7 +5,7 @@ import './video.css';
 import VideoPlayerDetails from './VideoPlayerDetails';
 
 
-const VideoPlayer = ({videoInfo}) => {
+const VideoPlayer = ({selectedVideo}) => {
 
     const [video,setVideo] = useState({
 
@@ -17,17 +17,17 @@ const VideoPlayer = ({videoInfo}) => {
     });
     
     useEffect(() => {
-        console.log(videoInfo);
-        if(videoInfo !== undefined){
+        console.log(selectedVideo);
+        if(selectedVideo !== null){
             setVideo({
-                videoId : videoInfo.id.videoId,
-                publishTime: videoInfo.snippet.publishTime,
-                publishAt: videoInfo.snippet.publishAt,
-                title : videoInfo.snippet.title,
+                videoId : selectedVideo.id.videoId,
+                publishTime: selectedVideo.snippet.publishTime,
+                publishAt: selectedVideo.snippet.publishAt,
+                title : selectedVideo.snippet.title,
             });
         }
                
-    },[videoInfo]);
+    },[selectedVideo]);
 
     // console.log(video);
 
@@ -40,7 +40,7 @@ const VideoPlayer = ({videoInfo}) => {
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen>
             </iframe>
-            <VideoPlayerDetails videoInfo={videoInfo} />
+            <VideoPlayerDetails videoInfo={selectedVideo} />
         </section>
     );
 }

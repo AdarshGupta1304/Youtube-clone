@@ -1,6 +1,6 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import Moment from "react-moment";
-import {test} from '../../util';
+import { test } from '../../util';
 import './video.css';
 
 import Row from 'react-bootstrap/Row';
@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 
 
 
-const VideoItem = ({videos}) => {
+const VideoItem = ({videos, onVideoSelect}) => {
 
    const [video,setVideo] = useState({
        thumbnailUrl: '',
@@ -33,8 +33,8 @@ const VideoItem = ({videos}) => {
    
 
     return(
-        <Fragment id="videoItem">
-            <Row>
+        <div onClick={(video) => onVideoSelect={videos}}>
+            <Row className="videoItems" >
                 <Col md={5}>
                 <img src={video.thumbnailUrl} alt="thumbnails" width={160} height={video.thumbnailHeight} />
                 </Col>
@@ -42,13 +42,12 @@ const VideoItem = ({videos}) => {
                 <Col md={7}>
                     <span className="thumbnail_Title">{video.title}</span><br />
                     <span className="text-muted channel_title">{video.channelTitle}</span><br />
-                    <p className="views"> <span>{test(Math.floor(Math.random()*99999999))}</span> * &nbsp;
+                    <p className="views"> <span>{test(Math.floor(Math.random()*999999))}</span> * &nbsp;
                     <Moment fromNow>{video.publishedAt}</Moment>
                     </p>
                 </Col>
             </Row>
-            {/* <hr /> */}
-        </Fragment>
+        </div>
         
     );
 }
