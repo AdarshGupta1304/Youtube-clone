@@ -13,7 +13,7 @@ import Col from 'react-bootstrap/Col';
 // Custom component imports
 import HeaderNav from './Components/Navbar/Navbar';
 import VideoPlayer from './Components/Videos/VideoPlayer';
-import VideoItem from './Components/Videos/VideoItem';
+// import VideoItem from './Components/Videos/VideoItem';
 import VideoList from './Components/Videos/VideoList';
 
 const App = () => {
@@ -53,9 +53,9 @@ const App = () => {
  useEffect(() => { console.log(video.videos); },[video.videos])
 
  const onVideoSelect = async (video) => {
-    setVideo({selectedVideo: video});
+    await setVideo({selectedVideo: video});
  }
- 
+
 
   return (
     <Container fluid>

@@ -33,7 +33,7 @@ const VideoItem = ({videos, onVideoSelect}) => {
    
 
     return(
-        <div onClick={(video) => onVideoSelect={videos}}>
+        <div onClick={() => onVideoSelect(videos)}>
             <Row className="videoItems" >
                 <Col md={5}>
                 <img src={video.thumbnailUrl} alt="thumbnails" width={160} height={video.thumbnailHeight} />
